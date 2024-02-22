@@ -7,13 +7,25 @@ Source: https://sketchfab.com/3d-models/35mm-film-roll-6d8a6d290de043e898420a040
 Title: 35mm Film Roll
 */
 
-import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import React, { useLayoutEffect, useRef } from 'react'
+import { ScrollControls, Sky, useScroll, useGLTF } from '@react-three/drei'
+import gsap from "gsap";
+import { useFrame } from '@react-three/fiber';
 
 export function Film(props) {
-  const { nodes, materials } = useGLTF('/film.glb')
+  const { nodes, materials } = useGLTF('/film.glb');
+  const ref = useRef();
+  const tl = useRef(); //timeline ref
+
+  useFrame((state, delta)=>{
+    // console.log(ref)
+    ref.current.rotation.y += delta;
+    // ref.current.rotation.x+= delta;
+    // ref.current.rotation.z+= .005;
+  })
+
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} ref = {ref}>
       <group scale={0.01}>
         <mesh geometry={nodes['LP_roll_film_Material_#27_0'].geometry} material={materials.Material_27} rotation={[-Math.PI / 2, 0, 0]} />
       </group>

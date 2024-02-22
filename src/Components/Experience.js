@@ -1,14 +1,18 @@
 "use client";
-import { OrbitControls} from "@react-three/drei";
+import { OrbitControls, ScrollControls} from "@react-three/drei";
 import {Film} from "./Film";
 
 export function Experience(){
 
     return(
         <>
-        <ambientLight intensity={2}/>
-            <OrbitControls/>
-            <Film/>
+        <color attach="background" args={['#333333']}/>
+            <ambientLight intensity={1.5}/>
+            <OrbitControls enableZoom={false} />
+            <ScrollControls pages={3} damping={0.25}>
+                <Film/>
+            </ScrollControls>
+            
         </>
     );
 };
