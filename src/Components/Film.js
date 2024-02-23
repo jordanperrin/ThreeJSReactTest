@@ -8,24 +8,50 @@ Title: 35mm Film Roll
 */
 
 import React, { useLayoutEffect, useRef } from 'react'
-import { ScrollControls, Sky, useScroll, useGLTF } from '@react-three/drei'
-import gsap from "gsap";
+import { useGLTF, useScroll } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
+import gsap from 'gsap';
 
 export function Film(props) {
   const { nodes, materials } = useGLTF('/film.glb');
-  const ref = useRef();
-  const tl = useRef(); //timeline ref
+  const film = useRef();
+  const scroll = useScroll();
+  const tl = useRef();  
 
-  useFrame((state, delta)=>{
-    // console.log(ref)
-    ref.current.rotation.y += delta;
-    // ref.current.rotation.x+= delta;
-    // ref.current.rotation.z+= .005;
+
+  useFrame((state, delta) =>{
+    tl.current.seek(scroll.offset * tl.current.duration())
   })
-
+  
+  useLayoutEffect(() =>{
+    tl.current = gsap.timeline({defaults: {duration: 2, ease: 'power1.inOut'}})
+  
+    tl.current
+      .to(film.current.rotation, {y: -1}, 2)
+      .to(film.current.position, {x: 1}, 2)
+  
+      .to(film.current.rotation, {y: 1}, 6)   
+      .to(film.current.position, {x: -1}, 6)
+  
+      .to(film.current.rotation, {y: 0}, 11)
+      .to(film.current.rotation, {x: 1}, 11)
+      .to(film.current.position, {x: 0}, 11)
+  
+      .to(film.current.rotation, {y: 0}, 13)
+      .to(film.current.rotation, {x: -1}, 13)    
+      .to(film.current.position, {x: 0}, 13)
+  
+      .to(film.current.rotation, {y: 0}, 16)   
+      .to(film.current.rotation, {x: 0}, 16) 
+      .to(film.current.position, {x: 0}, 16)    
+  
+      .to(film.current.rotation, {y: 0}, 20)   
+      .to(film.current.rotation, {x: 0}, 20) 
+      .to(film.current.position, {x: 0}, 20)   
+  
+  },[])
   return (
-    <group {...props} dispose={null} ref = {ref}>
+    <group {...props} dispose={null} ref = {film}>
       <group scale={0.01}>
         <mesh geometry={nodes['LP_roll_film_Material_#27_0'].geometry} material={materials.Material_27} rotation={[-Math.PI / 2, 0, 0]} />
       </group>
