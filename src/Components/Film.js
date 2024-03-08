@@ -27,15 +27,8 @@ export function Film(props) {
     tl.current = gsap.timeline({defaults: {duration: 2, ease: 'power1.inOut'}})
   
     tl.current
-      .to(film.current.rotation, {x: 0.4, y: 0.2, z:0.4}, 0)
-      .to(film.current.position, {y: 0.15, x:0.1}, 0)
-
-      .to(film.current.rotation, {x: 0.9, y: 0.5, z:0.9}, 2)
-      .to(film.current.position, {y: 0.25, x:0.1}, 2)
-
-    
-      // .to(film.current.position, {y: 0.2}, 0)
-      
+      .to(film.current.position, {y: 0.35, x:0.15}, 0)
+      .to(film.current.rotation, {x: .35, y: 0.5, z:1.4}, 0)      
   
   },[])
   return (
