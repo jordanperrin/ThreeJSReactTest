@@ -16,7 +16,7 @@ export function Experience(){
         <OrbitControls enableZoom={false} />
         <ScrollControls pages={2} damping={0.1}>f
             <Film scale={1.2}/>
-            {/* <Sparkles size={2} color={"#fff"} scale={[10,10,10]}> </Sparkles> */}
+            <Sparkles  count={400} size={2} color={"#fff"} scale={[5,5,5]} />
             <Scroll>
                 
             </Scroll>
