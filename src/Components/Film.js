@@ -27,13 +27,19 @@ export function Film(props) {
     tl.current = gsap.timeline({defaults: {duration: 2, ease: 'power1.inOut'}})
   
     tl.current
-      .to(film.current.position, {y: 0.35, x:0.15}, 0)
-      .to(film.current.rotation, {x: .35, y: 0.5, z:1.4}, 0)      
+    .from(film.current.scale, { x: 0.01, y: 0.01, z: 0.01 }, .5)
+      .to(film.current.position, {y: 0.5, x:0.45}, .5)
+      .to(film.current.rotation, {x: .35, y: 0.5, z:1.4}, .5)
+
+      
+
+      // .to(film.current.scale, { x: 3.5, y: 3.5, z: 3.5 }, 0.5);
+
   
   },[])
   return (
     <group {...props} dispose={null} ref = {film}>
-      <group scale={0.01}>
+      <group scale={0.03}>
         <mesh geometry={nodes['LP_roll_film_Material_#27_0'].geometry} material={materials.Material_27} rotation={[-Math.PI / 2, 0, 0]} />
       </group>
     </group>

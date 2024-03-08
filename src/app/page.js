@@ -13,7 +13,7 @@ export default function Home() {
         position: [2.3,.5,4.3],
       }}>
         <Experience/>
-        <axesHelper args={[5]} />
+        {/* <axesHelper args={[5]} /> */}
       </Canvas>
       </>
   );
