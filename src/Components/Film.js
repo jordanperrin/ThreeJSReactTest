@@ -24,23 +24,23 @@ export function Film(props) {
   })
   
   useLayoutEffect(() =>{
-    tl.current = gsap.timeline({defaults: {duration: 2, ease: 'power1.inOut'}})
+    tl.current = gsap.timeline({defaults: {duration: 1}})
   
     tl.current
-    .from(film.current.scale, { x: 0.01, y: 0.01, z: 0.01 }, .5)
-      .to(film.current.position, {y: 0.5, x:0.45}, .5)
-      .to(film.current.rotation, {x: .35, y: 0.5, z:1.4}, .5)
+      .from(film.current.position, { x:-1.5}, 0 )
+      // .from(film.current.scale, { x:-.3, y:-.3, z:-.3}, 0 )
+      // .from(film.current.rotation, { x:0.8, y:0, z:0},0)
 
       
 
-      // .to(film.current.scale, { x: 3.5, y: 3.5, z: 3.5 }, 0.5);
 
   
   },[])
+
   return (
     <group {...props} dispose={null} ref = {film}>
-      <group scale={0.03}>
-        <mesh geometry={nodes['LP_roll_film_Material_#27_0'].geometry} material={materials.Material_27} rotation={[-Math.PI / 2, 0, 0]} />
+      <group scale={0.023}>
+        <mesh geometry={nodes['LP_roll_film_Material_#27_0'].geometry} material={materials.Material_27} rotation={[-Math.PI / 1.9, 0, -.3]} position={[23, -12, 0]}/>
       </group>
     </group>
   )

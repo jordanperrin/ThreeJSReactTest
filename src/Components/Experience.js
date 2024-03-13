@@ -14,9 +14,9 @@ export function Experience(){
             preset={'warehouse'}
             />
         <OrbitControls enableZoom={false} />
-        <ScrollControls pages={2} damping={0.1}>f
+        <ScrollControls pages={3} damping={0.1}>f
             <Film scale={1.2}/>
-            <Sparkles  count={400} size={2} color={"#fff"} scale={[5,5,5]} />
+            <Sparkles  count={400} size={2} color={"#E68734"} scale={[5,5,5]} />
             <Scroll>
                 
             </Scroll>

@@ -10,10 +10,10 @@ export default function Home() {
     <>
       <Canvas className={styles.canvas} camera={{
         fov: 10,
-        position: [2.3,.5,4.3],
+        position: [0,.5,4.3],
       }}>
         <Experience/>
-        {/* <axesHelper args={[5]} /> */}
+        <axesHelper args={[5]} />
       </Canvas>
       </>
   );
