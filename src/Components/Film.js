@@ -34,7 +34,7 @@ export function Film(props) {
          , 0)
       .from(film.current.scale,
          {
-          duration:1,
+          duration:0.85,
           x: -.3,
           y: -.3, 
           z: -.3 
