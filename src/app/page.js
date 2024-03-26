@@ -6,7 +6,7 @@ import * as THREE from 'three'
 
 
 export default function Home() {
-  //test
+  
   return (
     <>
       <Canvas className={styles.canvas} camera={{
